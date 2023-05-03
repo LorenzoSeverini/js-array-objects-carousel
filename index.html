@@ -1,15 +1,64 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <title>Object-carousel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Carusel</title>
 </head>
 <body>
-    
 
+    <!-- header  -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Carusel</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- create a slider img  -->
+    <div class="slider">
+		<div id="initial-images" class="slider-images">
+            <!-- 5 img -->
+        </div>
+        <img id="image" src="" alt="Slider Image">
+		<h2 id="title"></h2>
+		<p id="text"></p>
+    </div>
+
+    <!-- create a slider btn  -->
+    <div class="container-btn"> 
+		<button id="prev-btn">Prev</button>
+		<button id="next-btn">Next</button>
+		<button id="play-btn">Play</button>
+		<button id="stop-btn">Stop</button>
+		<button id="reverse-btn">Reverse</button>
+	</div>
+
+    <!-- footer  -->
+    <footer>
+        <div class="container">
+            <div class="logo">
+                <h1>Carusel</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- script -->
     <script src="./js/main.js"></script>
 </body>
 </html>
