@@ -104,12 +104,7 @@ stopBtn.addEventListener('click', function () {
 });
 
 // Reverse
+// reversebtn change the direction of the slider
 reverseBtn.addEventListener('click', function () {
-    timer = setInterval(function () {
-        currentItem--;
-        if (currentItem < 0) {
-            currentItem = images.length - 1;
-        }
-        showimage(currentItem);
-    }, 3000);
+    sliderImages.classList.toggle('reverse');
 });
