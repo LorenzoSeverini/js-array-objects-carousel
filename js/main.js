@@ -30,15 +30,17 @@ const images = [
 // JS VARIABLES
 // *************************
 
-const prevBtn = document.querySelector('.prev-btn');
-const nextBtn = document.querySelector('.next-btn');
-const container = document.querySelector('.container');
-const thumbnails = document.querySelectorAll('.thumbnail');
-const thumbnailsContainer = document.querySelector('.thumbnails-container');
-const startBtn = document.querySelector('.start-btn');
-const stopBtn = document.querySelector('.stop-btn');
-const reverseBtn = document.querySelector('.reverse-btn');
-
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const image = document.getElementById('image');
+const title = document.getElementById('title');
+const text = document.getElementById('text');
+const playBtn = document.getElementById('play-btn');
+const stopBtn = document.getElementById('stop-btn');
+const reverseBtn = document.getElementById('reverse-btn');
+// Get slider images container
+const sliderImages = document.querySelector('.slider-images');
+let timer;
 
 // *************************
 // JS FUNCTIONS
@@ -48,22 +50,24 @@ let currentItem = 0;
 
 // Load initial item
 window.addEventListener('DOMContentLoaded', function () {
-    showImage(currentItem);
+    showimage(currentItem);
 });
 
-// Show Image 
-function showImage(Image) {
-    Image.array.forEach(element => {
-        const { image, title, text } = element;
-        const card = `
-        <div class="slider">
-            <img src="${image}" alt="${title}" class="img">
-            <h2 class="title">${title}</h2>
-            <p class="text">${text}</p>
-        </div>
-        `;  
-    });
+// Show image 
+function showimage(index) {
+    const item = images[index];
+    image.src = item.image; // should be updated to img.src = item.image;
+    title.textContent = item.title;
+    text.textContent = item.text;
 }
+
+// Create image elements for each object in the images array
+images.forEach(function(item) {
+	const img = document.createElement('img');
+	img.src = item.image;
+	img.alt = item.title;
+	sliderImages.appendChild(img);
+});
 
 // Show next image
 nextBtn.addEventListener('click', function () {
@@ -71,7 +75,7 @@ nextBtn.addEventListener('click', function () {
     if (currentItem > images.length - 1) {
         currentItem = 0;
     }
-    showImage(currentItem);
+    showimage(currentItem);
 });
 
 // Show prev image
@@ -80,72 +84,32 @@ prevBtn.addEventListener('click', function () {
     if (currentItem < 0) {
         currentItem = images.length - 1;
     }
-    showImage(currentItem);
+    showimage(currentItem);
 });
 
-// Show next Image
-nextBtn.addEventListener('click', function () {
-    currentItem++;
-    if (currentItem > images.length - 1) {
-        currentItem = 0;
-    }
-    showImage(currentItem);
-});
-
-// Show prev Image
-prevBtn.addEventListener('click', function () {
-    currentItem--;
-    if (currentItem < 0) {
-        currentItem = images.length - 1;
-    }
-    showImage(currentItem);
-});
-
-// *************************
-// JS BONUS
-// *************************
-
-// BONUS 1
-// Create thumbnails for each image in the array of objects and add them to the page (you can use a loop for this) 
-thumbnailsContainer.addEventListener('click', function (event) {
-    const target = event.target;
-    if (target.classList.contains('thumbnail')) {
-        const index = target.dataset.id;
-        currentItem = index;
-        showImage(currentItem);
-    }
-});
-
-// BONUS 2
-// Create a timer that changes the image every 3 seconds 
-let timer = setInterval(function () {
-    currentItem++;
-    if (currentItem > images.length - 1) {
-        currentItem = 0;
-    }
-    showImage(currentItem);
-}, 3000);
-
-// BONUS 3
-// Add a stop and play button to the page 
-startBtn.addEventListener('click', function () {
+// autoPlay
+playBtn.addEventListener('click', function () {
     timer = setInterval(function () {
         currentItem++;
         if (currentItem > images.length - 1) {
             currentItem = 0;
         }
-        showImage(currentItem);
+        showimage(currentItem);
     }, 3000);
 });
 
+// Stop
 stopBtn.addEventListener('click', function () {
     clearInterval(timer);
 });
 
+// Reverse
 reverseBtn.addEventListener('click', function () {
-    currentItem--;
-    if (currentItem < 0) {
-        currentItem = images.length - 1;
-    }
-    showImage(currentItem);
+    timer = setInterval(function () {
+        currentItem--;
+        if (currentItem < 0) {
+            currentItem = images.length - 1;
+        }
+        showimage(currentItem);
+    }, 3000);
 });
