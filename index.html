@@ -11,10 +11,8 @@
 
     <!-- header  -->
     <header>
-        <div class="container">
-            <div class="logo">
-                <h1>Carusel</h1>
-            </div>
+        <div class="containerImg">
+            <img src="./img/MarvelLogo.png" alt="Marvel Logo">
             <nav>
                 <ul>
                     <li><a href="#">Home</a></li>
@@ -25,24 +23,26 @@
     </header>
 
     <!-- create a slider img  -->
-    <div class="slider">
-		<div id="initial-images" class="slider-images">
-            <!-- 5 img -->
+    <div class="main">
+        <div class="slider">
+            <div id="initial-images" class="slider-images">
+                <!-- 5 img -->
+            </div>
+            <img id="image" src="" alt="Slider Image">
+            <h2 id="title"></h2>
+            <p id="text"></p>
         </div>
-        <img id="image" src="" alt="Slider Image">
-		<h2 id="title"></h2>
-		<p id="text"></p>
+    
+        <!-- create a slider btn  -->
+        <div class="container-btn"> 
+            <button id="prev-btn">Prev</button>
+            <button id="next-btn">Next</button>
+            <button id="play-btn">Play</button>
+            <button id="stop-btn">Pause</button>
+            <button id="reverse-btn">Reverse</button>
+        </div>
     </div>
-
-    <!-- create a slider btn  -->
-    <div class="container-btn"> 
-		<button id="prev-btn">Prev</button>
-		<button id="next-btn">Next</button>
-		<button id="play-btn">Play</button>
-		<button id="stop-btn">Stop</button>
-		<button id="reverse-btn">Reverse</button>
-	</div>
-
+    
     <!-- footer  -->
     <footer>
         <div class="container">
